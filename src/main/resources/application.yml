@@ -1,0 +1,42 @@
+server:
+  address: 0.0.0.0
+  port: 8080
+  error:
+    whitelabel:
+      enabled: false
+    path: /error
+
+external:
+  numberToken: PCfsvuE0z2KFjaA6jtXIdqbbVsZfahIH
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/animsemestrwork
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:17031703}
+    hikari:
+      maximum-pool-size: 20
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: update
+        naming:
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        show_sql: true
+        temp:
+          use_jdbc_metadata_defaults: false
+        hbm2ddl:
+          auto: update
+        database: postgresql
+
+logging:
+  level:
+    root: debug
